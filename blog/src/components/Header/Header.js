@@ -4,6 +4,8 @@ import { Link } from "gatsby"
 import styled from "styled-components"
 import { H1 } from "../Heading"
 import { Section } from '../Section'
+import { IconButton } from "../Button"
+import { Search } from 'styled-icons/feather'
 
 const StyledHeader = styled.header`
   margin: 0 auto;
@@ -12,26 +14,26 @@ const StyledHeader = styled.header`
   align-items: center;
   justify-content: space-between;
   height: 50px;
-  background: ${props => props.theme.header.backgroundColor};
+  background: ${({ theme }) => theme.variants.header.primary.backgroundColor};
 `
 
 const StyledLink = styled(Link)`
   font-size: var(--font-sm);
   text-decoration: none;
-  color: ${props => props.theme.header.color};
+  color: ${({ theme }) => theme.variants.header.primary.color};
 `
 
 const Header = ({ siteTitle }) => (
   <StyledHeader>
     <Section width={11/12}>
-      <StyledLink to="/">
-        <H1>
+      <H1>
+        <StyledLink to="/">
           {siteTitle}
-        </H1>
-      </StyledLink>
+        </StyledLink>
+      </H1>
     </Section>
     <Section width={1/12}>
-      Search
+      <IconButton icon={<Search></Search>} variant='contrast'></IconButton>
     </Section>
   </StyledHeader>
 )
